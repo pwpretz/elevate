@@ -1,0 +1,6 @@
+django 
+python-dotenv
+whitenoise
+django-browser-reload
+django-pwa
+gunicorn
