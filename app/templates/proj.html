@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} 
+
+{% block body %} 
+<div class="div1">
+    <img src="https://i.imgur.com/o0AcA37.jpg" alt="">
+</div>
+    <div>
+        <h1 class="text-center m-3 text-xl">Our Projects</h1>
+        {% if request.user.username %}
+        {% if request.user.manage == "True" %} 
+        <div class="text-blue-500 m-4">
+            <a href="/new/project">New project</a>
+        </div>
+        {% endif %}
+        {% endif %}
+        <div>
+            {% for project in projects %}
+            <a href="/inv/{{project.id}}">
+                <div class="border border-solid border-gray-500 p-4 m-2">
+                    <h1 class="text-xl">{{project.name}}</h1>
+                    <h1>{{project.location}}</h1>
+                    {% if request.user.manage %}
+                        <h1 class="text-red-500 mt-3"><a href="/del/proj/{{project.id}}">Delete Project</a></h1>
+                    {% endif %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="but">
+        <a href="/">
+            <button class="w-full bg-blue-500 py-3 rounded-lg ">Home</button>
+        </a>
+    </div>
+{% endblock %}

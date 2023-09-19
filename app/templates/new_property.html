@@ -1,0 +1,139 @@
+{% extends './layout.html' %} 
+
+{% block body %}
+
+<div class="flex justify-center">
+        <form class="form" action="/new/property" method="post">
+            <p class="form-title">New property</p>
+            <h1 class="text-xl p-2 text-red-600">{{error}}</h1>
+            <div class="input-container">
+                <select name="owned" id="">
+                    <option value="False">Un-Owned</option>
+                    <option value="True">Owned</option>
+                  </select>
+                </div>
+             <div class="input-container">
+               <input name="reg" type="text" placeholder="Enter Registration No">
+               <span>
+               </span>
+               {% csrf_token %}
+           </div>
+           <div class="input-container">
+               <input name="cnic" type="number" minlength="13" maxlength="13" placeholder="Enter Owner's CNIC">
+             </div>
+           <div class="input-container">
+               <input name="nam" type="text" placeholder="Enter Owner Name">
+             </div>
+           <div class="input-container">
+               <input name="app" type="text" placeholder="Enter Application Form No">
+             </div>
+           <div class="input-container">
+               <input name="pro" type="text"required="" placeholder="Enter Project Name">
+             </div>
+           <div class="input-container">
+               <input name="type" type="text"required="" placeholder="Enter Property type">
+             </div>
+           <div class="input-container">
+               <input name="floor" type="text"required="" placeholder="Enter Floor">
+             </div>
+           <div class="input-container">
+               <input name="unit" type="text"required="" placeholder="Enter Unit No">
+             </div>
+           <div class="input-container">
+               <input name="size" type="number"required="" placeholder="Enter Size">
+             </div>
+           <div class="input-container">
+               <input name="price" type="number"required="" placeholder="Enter Total price">
+             </div>
+           <div class="input-container">
+               <input name="discount" type="number" placeholder="Enter Discount">
+             </div>
+             <div class="input-container">
+               <input name="f" type="number" placeholder="Enter Final Price">
+              </div>
+              <div class="input-container">
+                  <input name="location" type="text"required="" placeholder="Enter Property Location">
+                </div>
+              <button type="submit" class="submit">
+             List
+           </button>
+        </form>
+</div>
+
+<style>
+    .form {
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.input-container select {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+</style>
+
+{% endblock %}

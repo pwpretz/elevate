@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block body %} 
+
+<div class="div2">
+    <img src="https://i.imgur.com/5mwU6Ng.png" alt="">
+</div>
+
+    <div>
+        <div class="m-12">
+            <h1>Name: {{iuser.first_name}} {{iuser.last_name}}</h1>
+            <h1>CNIC: {{iuser.cnic}}</h1>
+            <h1>Email: {{iuser.email}}</h1>
+            <h1 id="hidden">Password: ****** {% if iuser.cnic == request.user.cnic %} <a class="text-blue-500" href="/pass">Change password</a>{% endif %}</h1> 
+            {% if request.user.manage == "True" and request.user.cnic != iuser.cnic %}
+            <form id="staff" class="flex justify-between" action="/staff/view/{{iuser.id}}" method="post">
+                <h1>Staff</h1>
+                <label class="container">
+                    <input name="staff" value="True" onclick="document.getElementById('staff').submit()" {% if iuser.manage == "True" %} checked="checked" {% endif %} type="checkbox">
+                    <div class="checkmark"></div>
+                  </label>
+            </form>
+            {% endif %}
+            {% if request.user.manage == "True" %}
+            <div class="my-2">
+                <a class="text-blue-500 mt-3" href="/edit/user/{{iuser.id}}">
+                    Edit User
+                </a>
+            </div>
+            <a class="text-red-500 mt-3" href="/delete/user/{{iuser.id}}">
+                Delete User
+            </a>
+            {% endif %}
+            {% if check %} 
+            <a class="" href="/contact">
+                <h1 class="mt-4">Looks like we dont have any info on you ! please <span class="text-blue-500">Contact us</span> too add yours</h1>
+            </a>
+            {% if request.user.manage == "True" %}
+            <div class="pt-3 text-blue-500">
+                <a href="/new/info">Add info</a>
+            </div>
+            {% endif %}
+            {% else %} 
+                <h1 class="pb-2">Phone: {{info.phone}}</h1>
+                <h1>Father / Husband: {{info.name}}</h1>
+                <h1>Address: {{info.address}}</h1>
+                <h1>Occupation: {{info.occ}}</h1>
+                <h1 class="pb-2">Nationality: {{info.nat}}</h1>
+                <h1>Nominee's Name: {{info.nominee.name}}</h1>
+                <h1>Nominee's CNIC: {{info.nominee.cnic}}</h1>
+                <h1>Relation: {{info.nominee.relation}}</h1>
+                <h1>Nominee's Address: {{info.nominee.address}}</h1>
+                <div class="pt-3">
+                    <a href="/contact">
+                        <h1>Change my details <span class="text-blue-500">Contact us</span></h1>
+                    </a>
+                    <div class="pt-3">
+                        {% if request.user.manage == "True" %}
+                        <div>
+                            <a href="/edit/info/{{info.id}}" class="text-blue-500">
+                                Edit Info
+                            </a>
+                        </div>
+                            <br>
+                            <a href="/delete/info/{{info.id}}" class="text-red-500 ">
+                                Delete Info
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

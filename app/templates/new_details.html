@@ -1,0 +1,125 @@
+{% extends './layout.html' %} 
+
+{% block body %}
+
+<div class="flex justify-center">
+        <form class="form" action="/new/info" method="post">
+            <p class="form-title">Add user details</p>
+            <h1 class="text-xl p-2 text-red-600">{{error}}</h1>
+            {% csrf_token %}
+           <div class="input-container">
+               <input value="{{d.cnic}}" name="cnic" type="number" required minlength="13" maxlength="13" placeholder="Enter CNIC">
+             </div>
+           <div class="input-container">
+               <input value="{{d.fullName}}" name="fullName" type="text" required placeholder="Enter Full Name">
+             </div>
+           <div class="input-container">
+               <input value="{{d.name}}" name="name" type="text" required placeholder="Enter Father/Husband Name">
+             </div>
+           <div class="input-container">
+               <input value="{{d.address}}" name="add" type="text"required="" placeholder="Enter Address">
+             </div>
+           <div class="input-container">
+               <input value="{{d.phone}}" name="number" type="number"required="" placeholder="Enter Phone Number">
+             </div>
+           <div class="input-container">
+               <input value="{{d.occ}}" name="occ" type="text"required="" placeholder="Enter Occupation">
+             </div>
+           <div class="input-container">
+               <input value="{{d.nat}}" name="nat" type="text"required="" placeholder="Enter Nationality">
+             </div>
+           <div class="input-container">
+               <input value="{{d.nominee.name}}" name="nom" type="text"required="" placeholder="Enter Nominee Name">
+             </div>
+           <div class="input-container">
+               <input value="{{d.nominee.cnic}}" name="nomc" type="number"required="" placeholder="Enter Nominee CNIC">
+             </div>
+           <div class="input-container">
+               <input value="{{d.nominee.address}}" name="noma" type="text" placeholder="Enter Nominee Address">
+             </div>
+           <div class="input-container">
+               <input value="{{d.nominee.relation}}" name="rel" type="text"required="" placeholder="Enter Relation">
+             </div>
+              <button type="submit" class="submit">
+             List
+           </button>
+        </form>
+</div>
+
+<style>
+    .form {
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.input-container select {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="div1">
+    {% load static %}
+    <img src="https://i.imgur.com/rQYyNC1.jpg" alt="">
+</div>
+    <div>
+        <div>
+            <a href="/manage/sold">
+                <div class="border border-gray-500 p-4 m-3">
+                    <h1 class="text-xl">Sold</h1>
+                    <h1>Click to view all sold properties</h1>
+                </div>
+            </a>
+            <a href="/projects">
+                <div class="border border-gray-500 p-4 m-3">
+                    <h1 class="text-xl">Inventory</h1>
+                    <h1>Click to view all un-Sold properties</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <style>
+                .group {
+ display: flex;
+ line-height: 28px;
+ align-items: center;
+ position: relative;
+ width: 590px;
+}
+
+.input {
+ width: 100%;
+ height: 40px;
+ line-height: 28px;
+ padding: 0 1rem;
+ padding-left: 2.5rem;
+ border: 2px solid transparent;
+ border-radius: 8px;
+ outline: none;
+ background-color: #f3f3f4;
+ color: #0d0c22;
+ transition: .3s ease;
+}
+
+.input::placeholder {
+ color: #9e9ea7;
+}
+
+.input:focus, input:hover {
+ outline: none;
+ border-color: rgba(92, 92, 92, 0.4);
+ background-color: #fff;
+ box-shadow: 0 0 0 4px rgba(5, 5, 5, 0.1);
+}
+
+.icon {
+ position: absolute;
+ left: 1rem;
+ fill: #9e9ea7;
+ width: 1rem;
+ height: 1rem;
+}
+
+    </style>
+{% endblock %}

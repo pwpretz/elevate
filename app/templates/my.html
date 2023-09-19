@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} 
+
+{% block body %}
+<div class="div1">
+    <img src="https://i.imgur.com/EL7V0yC.jpg" alt="">
+</div>
+
+<div class="mt-4 overflow-x-hidden overflow-y-auto">
+    <h1 class="text-center text-xl">My Bookings</h1>
+    {% for item in list %}
+    <a href="/view/{{item.id}}">
+        <div class="mx-2 h-full p-4 border border-solid border-gray-500 ml mt-3">
+            <h1>Project: {{item.name}}</p>
+            <h1>Location: {{item.location}}</p>
+            <p class="text-sm">Type: {{item.type}}</p>
+            <p class="text-sm">Unit no: {{item.unit}}</p>
+            <p class="text-sm">Size: {{item.size}}SQF</p>
+            <p class="text-sm">Floor: {{item.floor}}</p>
+            <h1 class="pt-2 text-blue-500">Payment Deatails</h1>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<div class="but">
+    <a href="/">
+        <button class="w-full bg-blue-500 py-3 rounded-lg ">Home</button>
+    </a>
+</div>
+
+{% endblock %}

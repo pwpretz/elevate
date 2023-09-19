@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="div2">
+        {% load static %}
+        <img src="https://i.imgur.com/5mwU6Ng.png" alt="">
+    </div>
+    <div>
+        <div class="m-8 text-xl">
+            <h1 class="mt-2">Price: Rs{{view.price}}</h1>
+            <h1>Discount: Rs{{view.discount}}</h1>
+            <h1>Final Price: Rs{{view.fprice}}</h1>
+            <h1 class="mt-2 text-xl">Payment Plan</h1>
+            {% if check %}
+                {% if user.manage == "True" %}
+                    <h1 class="mt-3 text-blue-500"><a href="/new/paymentPlan/{{view.id}}">There is no payment plan click to add one</a></h1>
+                {% else %} 
+                    <h1 class="mt-3">Payment plan has not been added . <a class="text-blue-500" href="/contact">Contanct us about this</a></h1>
+                {% endif %}
+            {% else %}
+                {% for payment in payments %} 
+                    <div class="flex justify-between {% if payment.is_paid == "True" %} text-green-500 {% else %} text-red-500 {% endif %}">
+                        <h1 class="text-sm md:text-xl"> {{payment.type}}
+                        </h1>
+                        <h1 class="text-sm md:text-xl">{% if payment.is_paid == "True" %} Paid {% else %} Due {% endif %}</h1>
+                        <h1 class="text-sm md:text-xl">{{payment.date}}</h1>
+                        <h1 class="text-sm md:text-xl">Rs{{payment.amount}}</h1>
+                        {% if user.manage == "True" %} 
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% if request.user.manage == "True" %}
+                <div class="text-blue-500 mt-4">
+                    <a href="/new/paymentPlan/{{view.id}}" >Add Quater</a>
+                </div> 
+                    <div class="text-red-500 mt-2">
+                        <a href="/remove/paymentPlan/{{view.id}}" >Remove Quater</a>
+                    </div>
+                    <br>
+                {% endif %}
+            {% endif %}
+            {% if request.user.manage == "True" %} 
+            <div class="mt-5 text-red-500">
+                <a href="/delete/{{view.id}}" >Delete Property</a>
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<div class="but">
+    <a href="/">
+        <button class="w-full bg-blue-500 py-3 rounded-lg ">Home</button>
+    </a>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.asaantravels.twa",
+        "sha256_cert_fingerprints": ["06:36:00:23:A1:6D:17:BE:78:AA:2F:FD:57:B8:7F:51:70:80:2D:B0:C8:E8:CB:40:B3:1A:D0:F2:78:5B:CE:92"]
+      }
+    }]

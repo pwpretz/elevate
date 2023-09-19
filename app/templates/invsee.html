@@ -1,0 +1,48 @@
+{% extends 'layout.html' %} 
+
+{% block body %}
+<div class="div2">
+    <img src="https://i.imgur.com/5mwU6Ng.png" alt="">
+</div>
+    <div>
+        <div class="m-4">
+            <h1 class="text-center text-xl">Project: {{pro.name}}</h1>
+            <div class="flex justify-between">
+                <h1>Type</h1>
+                <h1>Floor</h1>
+                <h1>Size SQF</h1>
+                <h1>Price</h1>   
+            </div>
+            <div class="flex justify-between">
+                <h1>{{pro.type}}</h1>
+                <h1>{{pro.floor}}</h1>
+                <h1>{{pro.size}}</h1>
+                <h1>Rs{{pro.price}}</h1>   
+            </div>
+            <h1 class="text-center mt-5">
+                <form action="/contact/book" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{pro.id}}" name="id">
+                    <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-lg">
+                        Contact us to book
+                    </button>
+                </form>
+            </h1>
+        </div>
+        {% if request.user.manage == "True" %} 
+            <h1 class="text-red-500 m-4"><a href="/del/inv/{{pro.id}}">Delete Property</a></h1>
+        {% endif %}
+    </div>
+
+    <style>
+        h1 {
+            margin-top: 8px;
+        }
+    </style>
+    <div class="but">
+        <a href="/">
+            <button class="w-full bg-blue-500 py-3 rounded-lg ">Home</button>
+        </a>
+    </div>
+
+{% endblock %}

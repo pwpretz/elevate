@@ -1,0 +1,25 @@
+{% extends './layout.html' %} 
+
+{% block body %}
+
+<div class="d1">
+    <h1>Error: {{code}}</h1>
+    <h1>{{error}}</h1>
+</div>
+<div class="but">
+  <a href="/">
+      <button class="w-full bg-blue-500 py-3 rounded-lg ">Home</button>
+  </a>
+</div>
+
+<style>
+    .d1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+{% endblock %}

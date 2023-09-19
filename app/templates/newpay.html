@@ -1,0 +1,135 @@
+{% extends 'layout.html' %} 
+
+
+{% block body %}
+
+<div class="d1">
+        <form class="form" method="post" action="/new/paymentPlan/{{id}}">
+            <p class="form-title">Add payment plan</p>
+            <h1 class="text-xl text-center text-red-600">{{error}}</h1>
+             <div class="input-container">
+               <select required name="type" id="">
+                <option value="1st Quater">1st Quater</option>
+                <option value="2nd Quater">2nd Quater</option>
+                <option value="3rd Quater">3rd Quater</option>
+                <option value="4th Quater">4th Quater</option>
+                <option value="5th Quater">5th Quater</option>
+                <option value="6th Quater">6th Quater</option>
+                <option value="7th Quater">7th Quater</option>
+                <option value="8th Quater">8th Quater</option>
+                <option value="9th Quater">9th Quater</option>
+                <option value="10th Quater">10th Quater</option>
+                <option value="11th Quater">11th Quater</option>
+                <option value="Possession">Possession</option>
+                <option value="Booking">Booking</option>
+                <option value="Confirmation">Confirmation</option>
+               </select>
+               <span>
+               </span>
+           </div>
+           {% csrf_token %}
+           <div class="input-container">
+               <input required name="date" type="text" placeholder="Enter Due date">
+             </div>
+           <div class="input-container">
+               <input required name="amount" type="number" placeholder="Enter amount">
+             </div>
+           <div class="input-container">
+            <select required name="paid" id="">
+                <option value="True">Paid</option>
+                <option value="False">Not-Paid</option>
+            </select>
+             </div>
+              <button type="submit" class="submit">
+             List
+           </button>
+        </form>
+</div>
+
+<style>
+    .d1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+    .form {
+  background-color: #fff;
+  display: block;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.input-container select {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 5px;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+</style>
+
+{% endblock %}

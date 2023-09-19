@@ -1,0 +1,176 @@
+{% extends 'layout.html' %} 
+
+{% block body %} 
+
+    <div class="div1">
+        <img src="https://i.imgur.com/rQYyNC1.jpg" alt="">
+    </div>
+
+    <div class="d1">
+        <div class="card">
+            
+              <div class="card-details">
+                <p class="text-title"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="text-gray-400 bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg><p>
+                <p class="text-body">{{user.first_name}} {{user.last_name}}</p>
+                <p class="text-body">CNIC: {{user.cnic}}</p>
+                <form action="/staff/view/{{user.id}}" method="post">
+                    <p class="text-body">Staff: </p>
+                    <p class="text-body flex justify-between">
+                        <div class="checkbox-wrapper">
+                            <input name="staff" value="True" {% if user.manage %} checked="True" {% endif %} id="cbtest-19" type="checkbox">
+                            <label class="check-box" for="cbtest-19">
+                          </label></div>                      
+                    </p>
+                    {% csrf_token %}
+                    <p class="text-body">
+                        <button type="submit" class="bg-blue-600 border-blue-600 py-2 px-14 rounded-md m-3 text-white">
+                            Save
+                        </button>
+                    </p>
+                </form>
+              </div>
+        </div>
+    </div>
+
+    <style>
+            .d1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-0%, -50%);
+  transform: translate(-50%, -30%);
+}
+.card {
+ width: 190px;
+ height: 290px;
+ border-radius: 20px;
+ background: #f5f5f5;
+ position: relative;
+ padding: 5px;
+ border: 2px solid #c3c6ce;
+ transition: 0.5s ease-out;
+ overflow: visible;
+ text-align: center;
+}
+
+.card-details {
+ color: black;
+ height: 100%;
+ display: grid;
+ place-content: center;
+}
+
+
+.text-body {
+ color: rgb(134, 134, 134);
+ padding-top: 0px;
+}
+
+/*Text*/
+.text-title {
+ font-size: 1.5em;
+ font-weight: bold;
+ position: absolute;
+ left: 38%;
+ padding-top: 5px;
+}
+.checkbox-wrapper {
+  box-sizing: border-box;
+  --background-color: #fff;
+  --checkbox-height: 25px;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+  display: none;
+}
+
+.checkbox-wrapper .check-box {
+  height: var(--checkbox-height);
+  width: var(--checkbox-height);
+  background-color: transparent;
+  border: calc(var(--checkbox-height) * .1) solid rgb(134, 134, 134);
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition: border-color ease 0.2s;
+  -o-transition: border-color ease 0.2s;
+  -webkit-transition: border-color ease 0.2s;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+}
+
+.checkbox-wrapper .check-box::before,
+  .checkbox-wrapper .check-box::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  height: 0;
+  width: calc(var(--checkbox-height) * .2);
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  display: inline-block;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: " ";
+  -webkit-transition: opacity ease 0.5;
+  -moz-transition: opacity ease 0.5;
+  transition: opacity ease 0.5;
+}
+
+.checkbox-wrapper .check-box::before {
+  top: calc(var(--checkbox-height) * .72);
+  left: calc(var(--checkbox-height) * .41);
+  box-shadow: 0 0 0 calc(var(--checkbox-height) * .05) var(--background-color);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.checkbox-wrapper .check-box::after {
+  top: calc(var(--checkbox-height) * .37);
+  left: calc(var(--checkbox-height) * .05);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + .check-box,
+  .checkbox-wrapper .check-box.checked {
+  border-color: #5900ff;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + .check-box::after,
+  .checkbox-wrapper .check-box.checked::after {
+  height: calc(var(--checkbox-height) / 2);
+  -moz-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  -o-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  -webkit-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  animation: dothabottomcheck-19 0.2s ease 0s forwards;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + .check-box::before,
+  .checkbox-wrapper .check-box.checked::before {
+  height: calc(var(--checkbox-height) * 1.2);
+  -moz-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  -o-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  animation: dothatopcheck-19 0.4s ease 0s forwards;
+}
+    </style>
+{% endblock %}

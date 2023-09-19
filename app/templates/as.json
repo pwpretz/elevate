@@ -1,0 +1,10 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "net.aventus.www",
+        "sha256_cert_fingerprints": ["FB:74:1C:B0:34:A2:E3:07:66:BE:C1:EE:BD:CB:57:A0:56:CC:5B:DE:01:17:8D:C9:D3:15:E4:18:A6:56:FF:5A"]
+      }
+    }
+  ]
